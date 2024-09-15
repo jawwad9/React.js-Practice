@@ -40,6 +40,7 @@ const App = () => {
     console.log(todo);
 
     todoVal.current.value = ""  
+    
   }
   
 
