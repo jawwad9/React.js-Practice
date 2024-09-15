@@ -35,28 +35,34 @@ function App() {
   }
   return (
     <>
-    <h1>Weather-App</h1>
-
-      <form onSubmit={checkStatus}>
-      <input type="text" placeholder="Enter Text" ref={inputRef} />
-      <button type="submit">click</button>
+    <div className='text-center font-semibold text-[1.8rem] bg-light'>
+    <h1 className='p-4'>Weather-App</h1>
+      <form className='' onSubmit={checkStatus}>
+      <input className="form-control me-2" type="text" placeholder="Enter City Name!" ref={inputRef} />
+      <br />
+      <button className="btn btn-outline-primary" type="submit">Get Weather</button>
     </form>
+    
 
-    <div>
+    <div className=" d-flex justify-content-center gap-3 mt-3 pb-3 ">
                 {(
                     status.map((item, index) => (
-                        <div key={index}>
-                            <h2>Country  {item.location.country}, City  {item.location.name}</h2>
-                            <p>Temperature: {item.current.temp_c}°C</p>
-                            <p>Condition: {item.current.condition.text}</p>
+                        <div key={index} className=" text-center mt-2 p-3 bg-gray-800 p-6 rounded-lg shadow-lg transition transform hover:scale-105 hover:shadow-cyan-500/50 rounded">
+                            <h2>{item.location.name}, {item.location.country}</h2>
+                            <p>{item.location.localtime}</p>
+                            <h1> {item.current.temp_c}°C</h1>
                             <img src={item.current.condition.icon} alt="Weather condition" />
-                            <p>Humidity: {item.current.humidity}%</p>
-                            <p>Wind Speed: {item.current.wind_kph} kph</p>
+                            <p><b>Wind Speed:</b> {item.current.wind_kph} kph</p>
+                            <p><b>Condition:</b> {item.current.condition.text}</p>
+
                         </div>
                     ))
                 )}
+                
+            </div>
             </div>
 
+    
     
     </>
   )
