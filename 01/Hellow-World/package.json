@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-product",
+  "name": "hellow-world",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,17 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/icons-material": "^6.1.0",
-    "@mui/material": "^6.1.0",
-    "@mui/styled-engine-sc": "^6.1.0",
-    "axios": "^1.7.7",
-    "bootstrap": "^5.3.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "styled-components": "^6.1.13"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

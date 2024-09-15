@@ -33,7 +33,6 @@ function ResponsiveAppBar() {
   // Navigate
 
 const navigate = useNavigate();
-
   const handleCloseNavMenu = (page) => {
     console.log(page)
 if(page === "Home"){
@@ -69,7 +68,7 @@ navigate(page)
               textDecoration: 'none',
             }}
           >
-            PRODUCTS
+            ECOMMERCE
                       </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -8,6 +7,9 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Product from './pages/Product.jsx'
 import Contact from './pages/Contact.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SingleProduct from './pages/SingleProduct.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: 'Contact',
         element: <Contact/>
+
+      },
+      {
+        path: 'singleProduct/:id',
+        element: <SingleProduct/>
 
       },
       {
