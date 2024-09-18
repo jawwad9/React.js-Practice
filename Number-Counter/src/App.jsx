@@ -4,24 +4,12 @@ import './App.css'
 function App() {
   let [num, setNum] = useState(0)
   function addNum() {
+
+
     setNum(num + 1)
-
-
-    // agar aap 1 dafama 2 bar setNum ka function run karna chata ha to nicha diagay tarika sa nahi hoga
-    setNum(num + 1)
-    setNum(num + 1)
-
-
-    // agar aap 1 dafama 2 bar setNum ka function run karna chata ha to nicha diagay tarika sa hojayga but bad practice ha.
-    setNum(num += 1)
-    setNum(num += 1)
-
-
-    // agar aap 1 dafama 2 bar setNum ka function run karna chata ha to nicha diagay tarika sa hojayga or ya good practice ha.
-    setNum(prevVal => prevVal + 1);
-    setNum(prevVal => prevVal + 1);
-
   }
+
+  
   function lessNum() {
     if (num === 0) {
       alert(`The value does not go below zero`)
