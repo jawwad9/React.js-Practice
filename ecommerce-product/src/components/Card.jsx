@@ -13,7 +13,7 @@ export default function MediaCard({src, title, description, id}) {
     const navigate = useNavigate()
     const singleProduct = ()=>{
         console.log(id)
-        navigate(`/SingleProduct/${id}`)
+        navigate(`singleProduct/${id}`)
     }
   return (
     <Card sx={{ maxWidth: 345 }}>
