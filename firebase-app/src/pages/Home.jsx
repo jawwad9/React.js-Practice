@@ -32,9 +32,8 @@ const Home = () => {
 
     const todoTitle = async (event) => {
         event.preventDefault();
-        console.log(title.current.value);
-        console.log(dec.current.value);
-        
+        // console.log(title.current.value);
+        // console.log(dec.current.value);
         // console.log(auth.currentUser.uid);
         try {
             const docRef = await addDoc(collection(db, "store"), {
@@ -43,14 +42,14 @@ const Home = () => {
               uid: auth.currentUser.uid,
               postDate: Timestamp.fromDate(new Date()),
             });
-            const data = [];
-            data.push({
+            storeData.push({
                 title: title.current.value,
                 dec: dec.current.value,
-                uid: auth.currentUser.uid
+                uid: auth.currentUser.uid,
               });        
-              setStoreData([...data]);
-              console.log(storeData);
+              setStoreData(storeData);
+              renderDate()
+            //   console.log(storeData);
             console.log("Document written with ID: ", docRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
@@ -61,17 +60,17 @@ const Home = () => {
 
 
  // firebase firebaseStore render data  
- 
 async function renderDate() {
- ///  uery oder line by line uptade ke bad lest wala pehla number per   
+ ///  query order line by line uptade ke bad lest wala pehla number per   
     const q = query(collection(db, "store"), orderBy("postDate", "desc"));
     const querySnapshot = await getDocs(q);
-    const data = [];
+    const data = []; 
     querySnapshot.forEach((doc) => {
-      console.log({ id: doc.id, ...doc.data() });
-      data.push(doc.data());
+        console.log(doc.data());
+        data.push({ id: doc.id, ...doc.data() }); // Collect data with ID
     });
-    setStoreData(data);      
+    // Update state once with the new array
+    setStoreData(data);
      }
      useEffect(() => {
         renderDate(); // Call the async function on component mount
@@ -85,11 +84,12 @@ async function renderDate() {
   
     }
 
-    
+    // delete with firebase
     const deleteBtn = async (index)=> {
         console.log(deleteBtn, storeData[index]);
     await deleteDoc(doc(db, "store", storeData[index].id));
     alert("Blog deleted successfully!");
+    renderDate();
     }
 
     //   const deleteBtn = async (index) => {
@@ -115,7 +115,7 @@ async function renderDate() {
                     <h1>{item.dec}</h1>
                     <h1>{item.uid}</h1>
                     <button className="btn btn-active" onClick={()=>editBtn(index)}>Edit</button>
-                    <button className="btn btn-active" onClick={()=>deleteBtn(item.id)}>Delete</button>
+                    <button className="btn btn-active" onClick={()=>deleteBtn(index)}>Delete</button>
                 </div>
             })
         }<br></br>
