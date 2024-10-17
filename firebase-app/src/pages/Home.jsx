@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { auth, db  } from '../config/firebase/firebaseconfig';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection, addDoc, getDocs, Timestamp  } from "firebase/firestore"; 
+import { collection, addDoc, getDocs, Timestamp, query, orderBy  } from "firebase/firestore"; 
 
 
 const Home = () => {
@@ -62,19 +62,18 @@ const Home = () => {
  // firebase render data  
  
 async function renderDate() {
-    const querySnapshot = await getDocs(collection(db, "store"));
+ ///  uery oder line by line uptade ke bad lest wala pehla number per   
+    const q = query(collection(db, "store"), orderBy("postDate", "desc"));
+    const querySnapshot = await getDocs(q);
+    const data = [];
     querySnapshot.forEach((doc) => {
       console.log(doc.data());
-      storeData.push(doc.data());
+      data.push(doc.data());
     });
+    setStoreData(data);      
      }
-
-
-
      useEffect(() => {
         renderDate(); // Call the async function on component mount
-        setStoreData(storeData);      
-
     }, [])    
   return (
         <>
