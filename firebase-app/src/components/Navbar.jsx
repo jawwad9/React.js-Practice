@@ -51,6 +51,7 @@ const Navbar = () => {
         <div>
         <Link to={'Login'}>Login</Link>
         <Link to={'Register'}>Register</Link>
+        <Link to={'Home'}>Home</Link>
         </div>
 
      

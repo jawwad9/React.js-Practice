@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react'
-import { auth } from '../config/firebase/firebaseconfig';
+import React, { useEffect, useRef } from 'react'
+import { auth, db  } from '../config/firebase/firebaseconfig';
 import { useNavigate } from 'react-router-dom';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import { collection, addDoc } from "firebase/firestore"; 
+
 
 const Home = () => {
 
     const navigate = useNavigate();
+    const title = useRef();
+    const dec = useRef();
 
+
+// firebase  onAuthStateChanged
 
     useEffect(() => {
         const checkUser = onAuthStateChanged(auth, (user) => {
@@ -21,12 +27,42 @@ const Home = () => {
       }, []);
 
 
+//  firebade firestore
+
+    const todoTitle = async (event) => {
+        event.preventDefault();
+        console.log(title.current.value);
+        console.log(dec.current.value);
+        // console.log(auth.currentUser.uid);
+        try {
+            const docRef = await addDoc(collection(db, "store"), {
+              title: title.current.value,
+              dec: dec.current.value,
+              uid: auth.currentUser.uid
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        
+    }
+
+
+
      
       
 
   return (
         <>
-        <div className="carousel w-full">
+
+
+
+        <form onSubmit={todoTitle}>
+            <input type="text" placeholder='Enter your Text' ref={title}/>
+            <input type="text" placeholder='Enter your Text' ref={dec}/>
+            <button type='sumbit'>Click</button>
+        </form>
+        {/* <div className="carousel w-full">
   <div id="slide1" className="carousel-item relative w-full">
     <img
       src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
@@ -63,7 +99,7 @@ const Home = () => {
       <a href="#slide1" className="btn btn-circle">❯</a>
     </div>
   </div>
-</div>
+</div> */}
         </>
   )
 }
