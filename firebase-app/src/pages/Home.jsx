@@ -77,13 +77,6 @@ async function renderDate() {
     }, [])    
 
 
-
-
-    const editBtn = async (index)=> {
-        console.log(editBtn, storeData[index].docId);
-  
-    }
-
     // delete with firebase
     const deleteBtn = async (index)=> {
         console.log(deleteBtn, storeData[index]);
@@ -92,10 +85,12 @@ async function renderDate() {
     renderDate();
     }
 
-    //   const deleteBtn = async (index) => {
-//     await deleteDoc(doc(db, "userblogs", cardData[index].id));
-//     alert("Blog deleted successfully!");
-//   };
+
+    // edit with firebase
+    const editBtn = async (index)=> {
+        console.log(editBtn, storeData[index].docId);
+  
+    }
     
 
   return (
