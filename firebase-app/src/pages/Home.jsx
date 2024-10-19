@@ -89,6 +89,8 @@ async function renderDate() {
     // edit with firebase
     const editBtn = async (index)=> {
         console.log(editBtn, storeData[index].docId);
+        console.log(editBtn);
+        
   
     }
     
