@@ -90,6 +90,7 @@ async function renderDate() {
     const editBtn = async (index)=> {
         console.log(editBtn, storeData[index].docId);
         console.log(editBtn);
+        const docRef = doc(db, "store", storeData[index].id);
     }
     
 
