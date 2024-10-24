@@ -77,7 +77,7 @@ async function renderDate() {
     }, [])    
 
 
-    // delete with firebase
+    // delete function with firebase
     const deleteBtn = async (index)=> {
         console.log(deleteBtn, storeData[index]);
     await deleteDoc(doc(db, "store", storeData[index].id));
